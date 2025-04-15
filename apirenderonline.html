@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Spamly API Test</title>
+</head>
+<body>
+  <h2>Spamly - Check Your Message</h2>
+  <textarea id="message" rows="4" cols="50" placeholder="Enter your message here"></textarea>
+  <br>
+  <button onclick="checkSpam()">Check</button>
+
+  <p id="result"></p>
+
+  <script>
+    async function checkSpam() {
+      const text = document.getElementById("message").value;
+      const response = await fetch("https://spamly-api.onrender.com/predict", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ text: text })  // ✅ Fix here: not inside `message`
+      });
+
+      if (!response.ok) {
+        document.getElementById("result").innerText = "❌ Error connecting to API";
+        return;
+      }
+
+      const data = await response.json();
+      document.getElementById("result").innerText = `✅ Prediction: ${data.prediction}`;
+    }
+  </script>
+</body>
+</html>
