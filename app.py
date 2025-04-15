@@ -1,8 +1,20 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware  # 🆕 Add this line
 from pydantic import BaseModel
 import joblib
 
 app = FastAPI()
+
+# 🛡️ CORS Middleware to allow cross-origin frontend access
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # 🔒 You can restrict this to a domain later
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Load model and vectorizer
 model = joblib.load("pkl/spam_classifier_model.pkl")
 vectorizer = joblib.load("pkl/tfidf_vectorizer.pkl")
 
