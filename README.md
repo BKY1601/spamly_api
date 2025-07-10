@@ -28,7 +28,8 @@
 ## 📁 Project Structure
 
 `````
-├── model/
+├── model/ #Model script
+├── pkl/ saved pickel files from model 
 │ ├── spam_model.pkl # Trained model
 │ └── vectorizer.pkl # TF-IDF vectorizer
 ├── main.py # FastAPI application
