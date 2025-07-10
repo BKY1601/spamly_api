@@ -28,11 +28,12 @@
 ## 📁 Project Structure
 
 `````
+├── Data/ #Training dataset csv file
 ├── model/ #Model script
 ├── pkl/ saved pickel files from model 
 │ ├── spam_model.pkl # Trained model
 │ └── vectorizer.pkl # TF-IDF vectorizer
-├── main.py # FastAPI application
+├── app.py # FastAPI application
 ├── requirements.txt # Dependencies
 └── README.md # Project documentation
 ``````
